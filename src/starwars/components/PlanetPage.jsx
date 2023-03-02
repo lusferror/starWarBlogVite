@@ -16,6 +16,7 @@ export const PlanetPage = () => {
   }*/
   }
   return (
+    <div className="container">
     <div className="row mt-5">
       <div className="col-4">
       <img 
@@ -25,6 +26,10 @@ export const PlanetPage = () => {
       />
       {url} {name}
       </div>
+      <div className="col-8 auto">
+      <h2>aqui van detalles</h2>
+      </div>
+    </div>
     </div>
   )
 }

@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   })
               }
           },
-          getVehicle: ()=>{
+          getVehicle: (id)=>{
             useEffect(()=>{
                 let urlVeh = `https://www.swapi.tech/api/vehicles/${id}`
                 fetch(urlVeh)

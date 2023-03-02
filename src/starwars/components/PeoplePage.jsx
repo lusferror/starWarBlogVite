@@ -16,8 +16,9 @@ export const PeoplePage = () => {
   }*/
   }
   return (
+    <div className="container">
     <div className="row mt-5">
-      <div className="col-4">
+      <div className="col-4 auto">
       <img 
       src={`/assets/img/people/people-${id}_${name}.jpg`}
       alt={name}
@@ -25,29 +26,10 @@ export const PeoplePage = () => {
       />
       {url} {name}
       </div>
-    </div>
-  )
-}
-/**
- * import {Navigate, useParams } from "react-router-dom"
-import { getParamSW } from "../helpers";
-
-export const PlanetPage = () => {
-  const { id }= useParams();
-  const data_ = getParamSW(id)
-  {if(!data_){
-    return <Navigate to="/planet" />
-  }}
-  return (
-    <div className="row mt-5">
-      <div className="col-4">
-      <img 
-      src={`/assets/img/${data_.publicado}-${data_.uid}_${data_.name}.jpg`}
-      alt={data_.name}
-      className="img-thumbnail"
-      />
+      <div className="col-8 auto">
+      <h2>aqui van detalles</h2>
       </div>
     </div>
+    </div>
   )
 }
- */

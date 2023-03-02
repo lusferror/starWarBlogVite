@@ -6,9 +6,12 @@ import { Context } from "../store";
 export const VehiclePage = () => {
   const { store, actions } = useContext(Context);
   const { name, id ,url} = useParams();
+
   const {detallev}=store
   const {getVehicle}=actions
-  getVehicle()
+  getVehicle(id)
+
+
   return (
     <div className="container">
     <div className="row mt-5">
@@ -22,7 +25,7 @@ export const VehiclePage = () => {
       </div>
       <div className="col-8 auto">
         <h2>aqui van detalles</h2>
-       {detallev.model}
+       {/*detallev.model*/}
         {/*detallev.map((deta_v)=>{
           <div className="text-white" key={deta_v.url}>
             <h2>Modelo: {deta_v.model}</h2>
