@@ -1,6 +1,6 @@
 import React from 'react'
 import { injectContext, StarwarsRoutes } from '../starwars';
-import { Navigate, Route,Routes } from 'react-router-dom'
+import { Navigate, Route,Routes } from 'react-router-dom';
 import { StarHeader } from '../starwars';
 import { BrowserRouter } from 'react-router-dom';
 
