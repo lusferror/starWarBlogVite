@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 const getState = ({ getStore, getActions, setStore }) => {
   return {
       store: {
@@ -6,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           planets: null,
           vehicle: null,
           vehicles: null,
+          detallev:null,
           favorites: []
       },
       actions: {
@@ -88,25 +90,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                   })
               }
           },
-          getVehicle: async (url, options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }) => {
-            try {
-                const response = await fetch(url, options);
-                if (response.status !== 200) throw new Error("Error fetching Vehicle");
-                const data = await response.json();
-                setStore({
-                    vehicle: data
-                })
-            } catch (error) {
-                setStore({
-                    error: error.message
-                })
-            }
-        },
+          getVehicle: ()=>{
+            useEffect(()=>{
+                let urlVeh = `https://www.swapi.tech/api/vehicles/${id}`
+                fetch(urlVeh)
+                .then(data =>data.json())
+                .then(lectura =>
+                  setStore({detallev:lectura.result.properties}))
+                .catch((e)=>console.error(e))
+              },[])
+         },
+
           
       }
   }
