@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           vehicle: null,
           vehicles: null,
           detallev:null,
-          favorites: []
+          favorites: [],
+          llaves:[],
       },
       actions: {
           getPeople: async (url, options = {
@@ -95,12 +96,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let urlVeh = `https://www.swapi.tech/api/vehicles/${id}`
                 fetch(urlVeh)
                 .then(data =>data.json())
-                .then(lectura =>
-                  setStore({detallev:lectura.result.properties}))
+                .then(lectura =>{
+                  setStore({detallev:lectura.result.properties})
+                  const { detallev } = getStore()
+                  setStore({llaves : Object.keys(detallev)})
+                })
                 .catch((e)=>console.error(e))
               },[])
          },
-
+         almacenar_favorito:(name)=>{
+            const {favorites}=getStore();
+            setStore({favorites:[...favorites,name]})
+            console.log("Favoritos: ",getStore().favorites)
+         }
           
       }
   }

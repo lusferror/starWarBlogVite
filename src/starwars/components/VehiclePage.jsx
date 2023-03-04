@@ -5,37 +5,48 @@ import { Context } from "../store";
 
 export const VehiclePage = () => {
   const { store, actions } = useContext(Context);
-  const { name, id ,url} = useParams();
+  const { name, id, url } = useParams();
 
-  const {detallev}=store
-  const {getVehicle}=actions
-  getVehicle(id)
+  const { detallev , llaves } = store
+  const { getVehicle } = actions
+  getVehicle(id);
 
-
-  return (
-    <div className="container">
-    <div className="row mt-5">
-      <div className="col-4">
-      <img 
-      src={`/assets/img/vehicles/vehicle-${id}_${name}.jpg`}
-      alt={name}
-      className="img-thumbnail"
-      />
-      {url} {name}
-      </div>
-      <div className="col-8 auto">
-        <h2>aqui van detalles</h2>
-       {/*detallev.model*/}
-        {/*detallev.map((deta_v)=>{
-          <div className="text-white" key={deta_v.url}>
-            <h2>Modelo: {deta_v.model}</h2>
-          <p>{deta_v.name}</p>
+  if (detallev) {
+    return (
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-4">
+            <img
+              src={`/assets/img/vehicles/vehicle-${id}_${name}.jpg`}
+              alt={name}
+              className="img-thumbnail"
+            />
+            {url} {name}
           </div>
-        })*/}
-        
-      </div>
+          <div className="col-8 auto">
+            <h2>Detalles</h2>
+            <table>
+              { llaves.map(key=>
+              <tr>
+                <td className="col-6 text-white">{key}: </td>
+                <td className="text-warning">{detallev[key]}</td>
+              </tr>
+                )}
 
-    </div>
-    </div>
-  )
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+    )
+
+  }
+  else {
+    return (
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    )
+  }
 }

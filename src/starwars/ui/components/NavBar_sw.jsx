@@ -6,7 +6,7 @@ import {useContext,useState} from 'react';
 export const NavBar_sw = () => {
    
 const logo =`/assets/img/logo.png`;
-const navigate = useNavigate()
+// const navigate = useNavigate()
 const [favoritos,setFavoritos]= useState([])
 
 const onForward =()=>{

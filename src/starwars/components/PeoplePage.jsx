@@ -6,6 +6,7 @@ import { Context } from "../store";
 export const PeoplePage = () => {
   const { store, actions } = useContext(Context);
   const { name, id ,url} = useParams();
+  const { people } = store;
   {
     /*  const data_ = getParamSW(props)*/
   }
