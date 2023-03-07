@@ -7,7 +7,9 @@ export const StarwCard = ({uid,
 name,
 url,
 description,
-id
+id,
+existe,
+index
 }) => {
   const { store, actions} = useContext(Context);
   const { almacenar_favorito } = actions;
@@ -35,10 +37,12 @@ return (
               <Link to={`./people/${name}/${uid}`}>
                     Mas
               </Link>
+              {existe ? '':
               <div className='btn btn-secondary p-1'>
               <i className="fa-sharp fa-solid fa-heart"
-                  onClick={()=>almacenar_favorito(name)}></i>
+                  onClick={()=>almacenar_favorito(name,index)}></i>
               </div>
+              }
               </div>
             </div>
         </div>

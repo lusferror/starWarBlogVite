@@ -27,6 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                   setStore({
                       people: data
                   });
+                  const { people } = getStore()
+                  people.results.forEach(element=>{
+                      element['existe'] = false;
+                    })
+                  setStore({people:people});
+
               } catch (error) {
                   setStore({
                       error: error.message
@@ -104,9 +110,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                 .catch((e)=>console.error(e))
               },[])
          },
-         almacenar_favorito:(name)=>{
-            const {favorites}=getStore();
-            setStore({favorites:[...favorites,name]})
+         almacenar_favorito:(name,index)=>{
+            console.log(index);
+            const {favorites , people }=getStore();
+            people.results[index].existe = true;
+            let favorito = {
+                name : name,
+                index : index 
+            }
+            setStore({favorites:[...favorites,favorito],people:people})
             console.log("Favoritos: ",getStore().favorites)
          }
           
